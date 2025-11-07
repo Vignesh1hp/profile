@@ -1,0 +1,386 @@
+<div #panel *ngIf="isOpen" class="custom-panel shadow-lg bg-white position-absolute rounded-1 end-0 mt-2"
+  (click)="$event.stopPropagation()">
+  <div class="panel-image-wrapper position-relative">
+    <img src="assets/images/profile-bg.png" alt="bg-image" class="panel-image" />
+    <div class="top-section d-flex justify-content-between align-items-center">
+      <!-- Profile image -->
+      <img src="./assets/images/female-icon.svg" alt="Profile" class="profile-image" />
+
+      <!-- Logout button -->
+      <button class="btn btn-logout" (click)="onLogoutClick()">Logout</button>
+    </div>
+  </div>
+  <div class="custom-panel-body">
+    <div class="profile-content-wrapper">
+      @if (userRole === 'admin') {
+      <div class="d-flex align-items-center">
+        <div class="coach-name me-1">Admin Name</div>
+        <div class="small d-flex align-items-center">
+          <span class="rating-text">4</span>
+          <img src="./assets/images/rating-star.svg" alt="rating star" class="rating-star-icon" />
+        </div>
+      </div>
+      <div class="id-text">ID: 2323423</div>
+      <div class="general-details-wrapper">
+        <!-- <div class="details-heading"> General Details
+        </div> -->
+
+        <div class="detail-section d-flex justify-content-between align-items-center">
+          <!-- Left section -->
+          <div class="left-section d-flex flex-column">
+            <div class="left-detail-text">Mail ID</div>
+            <div class="left-detail-text">DOB</div>
+            <div class="left-detail-text">Gender</div>
+            <div class="left-detail-text">Location</div>
+          </div>
+
+          <!-- Right section -->
+          <div class="right-section d-flex flex-column">
+            <div class="right-detail-text">Name&#64;tvsmotor.com</div>
+            <div class="right-detail-text">24-05-1998</div>
+            <div class="right-detail-text">Male</div>
+            <div class="right-detail-text">Hosur</div>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (userRole === 'employee') {
+      <div class="d-flex align-items-center">
+        <div class="coach-name me-1">Employee Name</div>
+        <div class="small d-flex align-items-center">
+          <span class="rating-text">4</span>
+          <img src="./assets/images/rating-star.svg" alt="rating star" class="rating-star-icon" />
+        </div>
+      </div>
+      <div class="id-text">ID: 2323423</div>
+
+      <div class="general-details-wrapper">
+        <div class="details-heading">General Details</div>
+
+        <div class="detail-section d-flex justify-content-between align-items-center">
+          <!-- Left section -->
+          <div class="left-section d-flex flex-column">
+            <div class="left-detail-text">Mail ID</div>
+            <div class="left-detail-text">DOB</div>
+            <div class="left-detail-text">Gender</div>
+            <div class="left-detail-text">Location</div>
+          </div>
+
+          <!-- Right section -->
+          <div class="right-section d-flex flex-column">
+            <div class="right-detail-text">Name&#64;tvsmotor.com</div>
+            <div class="right-detail-text">24-05-1998</div>
+            <div class="right-detail-text">Male</div>
+            <div class="right-detail-text">Hosur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="emergency-details-wrapper">
+        <div class="details-heading">Emergency Contact Details</div>
+        <div class="detail-section d-flex justify-content-between align-items-center">
+          <!-- Left section -->
+          <div class="left-section d-flex flex-column">
+            <div class="left-detail-text">Mother</div>
+            <div class="left-detail-text">Spouse</div>
+          </div>
+
+          <!-- Right section -->
+          <div class="right-section d-flex flex-column">
+            <div class="right-detail-text">+91 676767XXXX</div>
+            <div class="right-detail-text">+91 676767XXXX</div>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if(userRole === 'coach'){
+      <div class="d-flex align-items-center">
+        <div class="coach-name me-1">Coach Name</div>
+        <div class="small d-flex align-items-center">
+          <span class="rating-text">4</span>
+          <img src="./assets/images/rating-star.svg" alt="rating star" class="rating-star-icon" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+
+        <div class="id-text">ID: 2323423</div>
+        <div class="coach-type">Physical Wellbeing</div>
+      </div>
+
+      <div class="general-details-wrapper">
+        <!-- <div class="details-heading"> General Details
+      </div> -->
+
+        <div class="detail-section d-flex justify-content-between">
+          <!-- Left section -->
+          <div class="left-section d-flex flex-column">
+            <div class="left-detail-text">Mail ID</div>
+            <div class="left-detail-text">DOB</div>
+            <div class="left-detail-text">Gender</div>
+            <div class="left-detail-text">Location</div>
+            <div class="left-detail-text">Department</div>
+          </div>
+
+          <!-- Right section -->
+          <div class="right-section d-flex flex-column">
+            <div class="right-detail-text">Name&#64;tvsmotor.com</div>
+            <div class="right-detail-text">24-05-1998</div>
+            <div class="right-detail-text">Male</div>
+            <div class="right-detail-text">Hosur</div>
+            <div class="right-detail-text">D&AI, HR, PED</div>
+          </div>
+        </div>
+      </div>
+      }
+
+      <div class="version-wrapper">
+        <div class="verstion-text">
+          Version 1.2.3 <span class="new-release-text">(New Release)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-panel-footer text-end">
+    <button class="btn btn-outline" (click)="close()">Close</button>
+  </div>
+</div>
+
+
+.custom-panel {
+  position: absolute;
+  width: 400px;
+  top: 45px;
+  z-index: 1050;
+  border-radius: 0px;
+  // For mobile
+  @media (max-width: 430px) {
+    width: 100%;
+  }
+}
+
+.panel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 150px;
+
+  img.panel-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .top-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px; 
+
+    .profile-image {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      border: 1px solid black;
+    }
+  }
+}
+
+// button outline
+
+.btn-outline {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #5b2ae3;
+  border-radius: 20px;
+  color: #5b2ae3;
+  padding: 6px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'roboto';
+  transition: all 0.3s ease;
+}
+
+.btn-logout {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #5b2ae3;
+  border-radius: 20px;
+  color: #5b2ae3;
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'roboto';
+  transition: all 0.3s ease;
+}
+
+.custom-panel-footer {
+  padding-right: 24px;
+  padding-bottom: 16px;
+}
+
+// profile section styles
+.header {
+  background-color: #5b2ae3;
+  height: 48px;
+  padding: 6px 24px;
+  .profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.profile-content-wrapper {
+  padding: 16px;
+  .general-details-wrapper {
+    padding: 16px 8px 10px 14px;
+    margin-top: 16px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+
+  .emergency-details-wrapper {
+    padding: 16px 12px 16px 14px;
+    background-color: #f8f9fa;
+    margin-top: 11px;
+    border-radius: 6px;
+  }
+
+  .version-wrapper {
+    padding: 6px 12px;
+    margin-top: 16px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+}
+
+.detail-section {
+  .left-section,
+  .right-section {
+    gap: 16px;
+  }
+}
+
+// typography
+.details-heading {
+  color: #000000; 
+  font-weight: 500; 
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+}
+
+.left-detail-text {
+  color: #666666; 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
+  font-size: 0.75rem; 
+}
+
+.right-detail-text {
+  color: #191919; 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
+  font-size: 0.8125rem; 
+}
+
+.left-detail-text,
+.right-detail-text {
+  line-height: 1.25rem; 
+}
+
+.coach-name {
+  color: #1f1f1f;
+
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.coach-type{
+
+  font-size: 0.875rem;
+  font-weight:500;
+  color:#006E08;
+  padding-right: 8px;
+}
+
+.rating-text {
+  color: #ffa700; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; 
+  font-size: 0.9375rem; 
+}
+
+.id-text {
+  color: #666666; 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
+  font-size: 0.8125rem; 
+}
+
+.verstion-text {
+  color: #0900e5; 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
+  font-size: 0.75rem; 
+}
+
+.new-release-text {
+  color: #6e6e6e; 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
+  font-size: 0.625rem; 
+}
+
+
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, output } from '@angular/core';
+
+@Component({
+  selector: 'app-profile',
+  imports: [CommonModule],
+  templateUrl: './profile.html',
+  styleUrl: './profile.scss',
+})
+export class Profile {
+  logoutClicked = output<void>();
+
+  userRole: 'admin' | 'coach' | 'employee' = 'employee';
+
+  isOpen = false;
+
+  constructor(private eRef: ElementRef) {}
+
+  open() {
+    this.isOpen = true;
+  }
+
+  close() {
+    this.isOpen = false;
+  }
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
+  // Close when clicking outside
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
+
+  toggleProfilePanel(event: Event) {
+    event.stopPropagation();
+    this.isOpen = !this.isOpen;
+  }
+
+  onLogoutClick() {
+    this.logoutClicked.emit(); // 👈 notify parent
+    this.close(); // optional: close the panel after logout
+  }
+}
