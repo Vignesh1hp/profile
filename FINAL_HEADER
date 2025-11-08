@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="header-left">
+        <h1 class="brand-name">My Health Index</h1>
+      </div>
+      <div class="header-right d-flex align-items-center">
+        <img src="assets/images/tvs-logo-white.png" alt="TVS Logo" class="tvs-logo" />
+        <button class="btn header-btn btn-notification"><i class="bi bi-bell"></i></button>
+        <div class="dropdown">
+          <button
+            class="btn header-btn btn-profile"
+            (click)="toggleProfilePanel()"
+          >
+            <i class="bi bi-person-circle"></i>
+          </button>
+
+          <app-profile [isOpen]="isProfileOpen" (logoutClicked)="logout()"></app-profile>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '@/core/services/auth.service';
+import { Profile } from '@/app/shared/profile/profile';
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, Profile],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+})
+export class HeaderComponent {
+  constructor(public authService: AuthService) {}
+
+  isProfileOpen = false;
+
+  toggleProfilePanel() {
+    this.isProfileOpen = !this.isProfileOpen;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+}
